@@ -1,14 +1,16 @@
 package api
 
 import (
+	"errors"
 	"fmt"
 	"os"
+	"os/exec"
 	"path/filepath"
 
 	"github.com/project-flogo/cli/util"
 )
 
-func Create(basePath, appName, appCfgPath string) error {
+func Create(basePath, appName, appCfgPath, boardName string) error {
 	var err error
 	var appJson string
 
@@ -39,10 +41,13 @@ func Create(basePath, appName, appCfgPath string) error {
 
 	fmt.Printf("Creating Flogo Device App: %s\n", appName)
 
-	_, err = createAppDirectory(basePath, appName)
+	appDir, err := createAppDirectory(basePath, appName)
 	if err != nil {
 		return err
 	}
+	deviceProject := NewDeviceProject(appDir)
+
+	util.ExecCmd(exec.Command("platformio", "init", "--board", boardName), deviceProject.AppDir())
 
 	return nil
 }
@@ -64,6 +69,12 @@ func getAppName(appName, appJson string) (string, error) {
 func createAppDirectory(basePath, appName string) (string, error) {
 
 	var err error
+
+	_, err = exec.LookPath("platformio")
+
+	if err != nil {
+		return "", errors.New("platformio not installed")
+	}
 
 	if basePath == "." {
 		basePath, err = os.Getwd()
