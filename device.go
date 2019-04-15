@@ -13,7 +13,7 @@ import (
 func init() {
 	common.RegisterPlugin(deviceCmd)
 	deviceCmd.AddCommand(createCmd)
-	CreateCmd.Flags().StringVarP(&flogoJsonPath, "file", "f", "", "specify a flogo.json to create project from")
+	createCmd.Flags().StringVarP(&flogoJsonPath, "file", "f", "", "specify a flogo.json to create project from")
 }
 
 var verbose bool
