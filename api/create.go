@@ -32,6 +32,9 @@ func Create(basePath, appName, appCfgPath, boardName string) error {
 		if len(appName) == 0 {
 			return fmt.Errorf("app name not specified")
 		}
+		if len(boardName) == 0 {
+			return fmt.Errorf("board name not specified")
+		}
 	}
 
 	appName, err = getAppName(appName, appJson)
