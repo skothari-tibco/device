@@ -16,7 +16,7 @@ func Create(basePath, appName, appCfgPath, boardName string) error {
 	var err error
 	var appJson string
 
-	fmt.Println("Plugin Version..", common.GetPluginVersion("abc"))
+	fmt.Println("Plugin Version..", common.GetPluginVersion("github.com/skothari-tibco/device"))
 
 	if appCfgPath != "" {
 
