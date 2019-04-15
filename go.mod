@@ -1,4 +1,4 @@
-module github.com/project-flogo/device
+module github.com/skothari-tibco/device
 
 require (
 	github.com/project-flogo/cli v0.9.0-beta.2
