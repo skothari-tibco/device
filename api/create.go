@@ -37,7 +37,7 @@ func Create(basePath, appName, appCfgPath string) error {
 		return err
 	}
 
-	fmt.Printf("Creating Flogo App: %s\n", appName)
+	fmt.Printf("Creating Flogo Device App: %s\n", appName)
 
 	_, err = createAppDirectory(basePath, appName)
 	if err != nil {
