@@ -8,11 +8,15 @@ import (
 	"path/filepath"
 
 	"github.com/project-flogo/cli/util"
+
+	"github.com/project-flogo/cli/common"
 )
 
 func Create(basePath, appName, appCfgPath, boardName string) error {
 	var err error
 	var appJson string
+
+	fmt.Println("Plugin Version..", common.GetPluginVersion("abc"))
 
 	if appCfgPath != "" {
 
@@ -48,9 +52,14 @@ func Create(basePath, appName, appCfgPath, boardName string) error {
 	if err != nil {
 		return err
 	}
+
 	deviceProject := NewDeviceProject(appDir)
 
-	util.ExecCmd(exec.Command("platformio", "init", "--board", boardName), deviceProject.AppDir())
+	err = util.ExecCmd(exec.Command("platformio", "init", "--board", boardName), deviceProject.AppDir())
+
+	if err != nil {
+		return err
+	}
 
 	return nil
 }
