@@ -5,13 +5,13 @@ import (
 	"os"
 
 	cliApi "github.com/project-flogo/cli/api"
-	"github.com/skothari-tibco/device"
+
 	"github.com/skothari-tibco/device/api"
 	"github.com/spf13/cobra"
 )
 
 func init() {
-	device.DeviceCmd.AddCommand(createCmd)
+	DeviceCmd.AddCommand(createCmd)
 	createCmd.Flags().StringVarP(&flogoJsonPath, "file", "f", "", "specify a flogo.json to create device project from")
 }
 

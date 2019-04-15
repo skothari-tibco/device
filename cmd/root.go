@@ -1,4 +1,4 @@
-package device
+package cmd
 
 import (
 	"fmt"
@@ -9,10 +9,7 @@ import (
 
 func init() {
 	common.RegisterPlugin(DeviceCmd)
-
 }
-
-var verbose bool
 
 var DeviceCmd = &cobra.Command{
 	Use:              "device",
