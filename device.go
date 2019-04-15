@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/project-flogo/cli/common" // Flogo CLI support code
-	"github.com/project-flogo/device/api"
+	"github.com/skothari-tibco/device/api"
 	"github.com/spf13/cobra"
 )
 
